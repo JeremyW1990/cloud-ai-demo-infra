@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "cloud-ai-jeremy-wang"
+    bucket = "cloud-ai-demo-infra"
     key    = "cloud-ai/terraform.tfstate"
     region = "us-east-1"
   }
