@@ -46,6 +46,7 @@ resource "aws_iam_role" "eks_nodes" {
 POLICY
 }
 
+
 # Attach node policies
 resource "aws_iam_role_policy_attachment" "eks_nodes_policy" {
   role       = aws_iam_role.eks_nodes.name
