@@ -10,6 +10,7 @@ resource "aws_eks_cluster" "this" {
   depends_on = [ 
     aws_iam_role_policy_attachment.eks_cluster_policy,
     aws_iam_role_policy_attachment.eks_nodes_policy,
+    aws_iam_role_policy_attachment.eks_nodes_cr_policy
   ]
 }
 
@@ -27,6 +28,7 @@ resource "aws_eks_node_group" "this" {
 
   depends_on = [ 
     aws_iam_role_policy_attachment.eks_cluster_policy,
-    aws_iam_role_policy_attachment.eks_nodes_policy
+    aws_iam_role_policy_attachment.eks_nodes_policy,
+    aws_iam_role_policy_attachment.eks_nodes_cr_policy
   ]
 }
