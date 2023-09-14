@@ -52,4 +52,7 @@ resource "aws_iam_role_policy_attachment" "eks_nodes_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
 }
 
-# optional additional policies
+resource "aws_iam_role_policy_attachment" "eks_nodes_cr_policy" {
+  role       = aws_iam_role.eks_nodes.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+}
