@@ -1,4 +1,4 @@
-# Create service role for EKS control plane
+
 resource "aws_iam_role" "eks_cluster" {
   name = "eks-cluster-role"
 
@@ -18,15 +18,20 @@ resource "aws_iam_role" "eks_cluster" {
 POLICY
 }
 
-# Attach policies to give EKS control plane required permissions
-resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {
+
+resource "aws_iam_role_policy_attachment" "AmazonEKSClusterPolicy" {
   role       = aws_iam_role.eks_cluster.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
 
-# Optionally attach additional policies 
+resource "aws_iam_role_policy_attachment" "AmazonEKSVPCResourceController" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
+  role       = aws_iam_role.example.name
+}
 
-# Create worker node role
+
+
+
 resource "aws_iam_role" "eks_nodes" {
   name = "eks-node-group-role"
 
@@ -48,12 +53,17 @@ POLICY
 
 
 # Attach node policies
-resource "aws_iam_role_policy_attachment" "eks_nodes_policy" {
+resource "aws_iam_role_policy_attachment" "AmazonEKSWorkerNodePolicy" {
   role       = aws_iam_role.eks_nodes.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
 }
 
-resource "aws_iam_role_policy_attachment" "eks_nodes_cr_policy" {
+resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
   role       = aws_iam_role.eks_nodes.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+}
+
+resource "aws_iam_role_policy_attachment" "AmazonEKS_CNI_Policy" {
+  role       = aws_iam_role.eks_nodes.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
 }
