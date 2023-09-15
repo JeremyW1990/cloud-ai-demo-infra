@@ -1,7 +1,9 @@
-
-
 data "aws_eks_cluster_auth" "this" {
   name = aws_eks_cluster.this.name
+}
+
+locals {
+  aws_auth_config = yamldecode(file("${path.module}/aws-auth-configmap.yaml"))
 }
 
 provider "kubernetes" {
@@ -17,19 +19,7 @@ resource "kubernetes_config_map" "aws_auth" {
   }
 
   data = {
-    mapRoles = <<YAML
-    - rolearn: arn:aws:iam::488770167024:role/eks-node-group-role
-    username: system:node:{{EC2PrivateDNSName}}
-    groups:
-        - system:bootstrappers
-        - system:nodes
-    YAML
-    # Optionally, if you want to add users to the config map:
-    mapUsers = <<YAML
-    - userarn: arn:aws:iam::488770167024:user/jeremywang
-      username: jeremywang
-      groups:
-        - system:masters
-    YAML
+    mapRoles = local.aws_auth_config["mapRoles"]
+    mapUsers = local.aws_auth_config["mapUsers"]
   }
 }
