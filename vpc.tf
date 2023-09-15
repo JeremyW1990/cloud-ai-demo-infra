@@ -72,15 +72,6 @@ resource "aws_nat_gateway" "cloud-ai-nat-gateway" {
   }
 }
 
-resource "aws_nat_gateway" "cloud-ai-nat-gateway" {
-  allocation_id = aws_eip.nat_gateway_eip.id
-  subnet_id     = aws_subnet.public_subnet.id
-
-  tags = {
-     Name = "Cloud-AI NAT Gateway"
-  }
-}
-
 # Associate route table with subnet a
 resource "aws_route_table_association" "private_1a" {
   subnet_id      = aws_subnet.cloud-ai-private-subnet-us-east-1a.id
