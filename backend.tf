@@ -1,3 +1,7 @@
+provider "aws" {
+  version = "~> 3.0"
+}
+
 terraform {
   backend "s3" {
     bucket = "cloud-ai-demo-infra"
