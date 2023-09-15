@@ -7,5 +7,5 @@ module "eks_cluster" {
   private_subnets = [aws_subnet.cloud-ai-private-subnet-us-east-1a.id, aws_subnet.cloud-ai-private-subnet-us-east-1b.id, aws_subnet.cloud-ai-private-subnet-us-east-1c.id]
   cluster_version = "1.27"
   
-  cluster_name = "my-cluster"
+  cluster_name = "cloud-ai-demo"
 }
