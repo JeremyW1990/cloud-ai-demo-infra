@@ -12,6 +12,7 @@
 #   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
 # }
 
+
 # module "eks_cluster" {
 #   source = "./modules/eks"
 
