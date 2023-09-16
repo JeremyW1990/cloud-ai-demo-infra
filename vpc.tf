@@ -44,10 +44,19 @@ resource "aws_subnet" "cloud-ai-public-subnet-us-east-1c" {
 
 resource "aws_security_group" "cloud-ai-allow-all" {
   name        = "cloud-ai-allow-all"
-  description = "Allow all inbound traffic"
+  description = "Allow all inbound and outbound traffic"
   vpc_id      = aws_vpc.cloud-ai-vpc.id
 
+  # Allow all inbound traffic
   ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Allow all outbound traffic
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
