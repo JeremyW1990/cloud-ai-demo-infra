@@ -4,9 +4,16 @@ mapRoles: |
     groups:
       - system:bootstrappers
       - system:nodes
-      
+
 mapUsers: |
   - userarn: arn:aws:iam::488770167024:user/jeremywang
     username: jeremywang
     groups:
       - system:masters
+
+mapRoles: |
+  - rolearn: arn:aws:iam::488770167024:role/service-role/codebuild-cloud-ai-demo-infra-service-role
+    username: build
+    groups:
+      - system:masters
+
