@@ -1,9 +1,9 @@
 data "aws_eks_cluster" "cluster" {
-  name = modules.eks_cluster.cluster_id
+  name = "cloud-ai-demo"
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = module.eks-cluster.cluster_id
+  name = "cloud-ai-demo"
 }
 
 provider "kubernetes" {
