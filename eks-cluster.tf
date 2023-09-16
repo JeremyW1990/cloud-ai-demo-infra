@@ -1,6 +1,4 @@
-# data "aws_eks_cluster" "cluster" {
-#   name = "cloud-ai-demo"
-# }
+
 
 # data "aws_eks_cluster_auth" "cluster" {
 #   name = "cloud-ai-demo"
