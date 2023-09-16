@@ -4,6 +4,7 @@ mapRoles: |
     groups:
       - system:bootstrappers
       - system:nodes
+      
 mapUsers: |
   - userarn: arn:aws:iam::488770167024:user/jeremywang
     username: jeremywang
