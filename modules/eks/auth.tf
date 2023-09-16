@@ -4,7 +4,7 @@ locals {
 
 resource "kubernetes_config_map" "aws_auth" {
   metadata {
-    name      = "additional-aws-auth"
+    name      = "aws-auth" 
     namespace = "kube-system"
   }
 
@@ -13,3 +13,4 @@ resource "kubernetes_config_map" "aws_auth" {
     mapUsers = local.aws_auth_config["mapUsers"]
   }
 }
+
