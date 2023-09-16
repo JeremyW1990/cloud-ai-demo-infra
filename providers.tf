@@ -2,7 +2,7 @@ terraform {
   required_providers {
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = "~> 2.0" # adjust the version as per your needs
+      version = "~> 3.0" # adjust the version as per your needs
     }
   }
 
@@ -12,3 +12,4 @@ terraform {
     region = "us-east-1"
   }
 }
+
